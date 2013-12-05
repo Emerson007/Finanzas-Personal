@@ -14,6 +14,7 @@ class Conexion
 	protected $resultado;
 	
 	protected $tabla = ".";
+	protected $losDatos;
 
     function __construct($inServidor, $inBaseDatos, $inUsuario, $inContrasenia) 
    
@@ -29,8 +30,6 @@ class Conexion
 	public function BaseDatos()
 	
 	{
-	
-		echo "I";
 	
 		$this->descriptor = mysql_connect($this->servidor, $this->usuario, $this->contrasenia);
 		
@@ -62,11 +61,11 @@ class Conexion
 		
 		{
 		
-			$querty = "SELECT * FROM ".$this->tabla." WHERE Usuarios_idUsuarios = ".$id;
+			$querty = "SELECT * FROM ".$this->tabla." WHERE Usuario_idUsuario =".$id;
 			
-			echo $querty;
+			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
 			
-			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());			
+			$this->Distribucion();			
 		
 		}
 		
@@ -79,6 +78,72 @@ class Conexion
 		}
 	
 	}
+	
+	
+	public function ConsultarTodo($id)
+	
+	{
+	
+		if($this->exitoso === true)
+		
+		{
+		
+			$querty = "SELECT T.idTransaccion, T.fecha, R.descripcion, R.libro, D.detalle, D.monto, T.Rubros_idRubros".
+						" FROM Transaccion T INNER JOIN Rubros R ON R.idRubros = T.Rubros_idRubros INNER JOIN".
+						" DetalleTransaccion D ON D.Transaccion_idTransaccion = T.idTransaccion WHERE T.Usuario_idUsuario".
+						" =".$id." AND R.Usuario_idUsuario =".$id." AND D.Usuario_idUsuario=".$id;
+			
+			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
+			
+			$this->Distribucion();			
+		
+		}
+		
+		else
+		
+		{
+		
+			echo "fallido";
+		
+		}
+	
+	}	
+	
+	protected function Distribucion()
+	
+	{
+	
+		$length = mysql_num_rows($this->resultado);
+   	
+	   	for($a = 0; $a < $length; $a++)
+   	
+	   	{   	
+   	
+   			$row = mysql_fetch_assoc($this->resultado);
+   	
+	   		$b = 0;
+   	
+			foreach($row as $value)
+   		
+	   		{
+	   		
+	 			$this->losDatos[$a][$b] = $value;
+	   				
+				$b++;
+	   		
+   			}
+	
+		}			
+	
+	}
+	
+	public function TodosDatos()
+	
+	{
+	
+		return $this->losDatos;
+	
+	}		
 
 }
 

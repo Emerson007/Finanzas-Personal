@@ -6,22 +6,6 @@ class Rubro extends Conexion
 
 	protected $tabla = "Rubros";
 	
-	public function Distribucion()
-	
-	{
-	
-		
-	
-	}
-	
-	public function TodosRubros()
-	
-	{
-	
-		
-	
-	}
-	
 	public function InsertarRubro($descriptor, $libro, $id)
 	
 	{
