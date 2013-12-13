@@ -1,0 +1,165 @@
+#todo
+{
+
+	background-image:url('Images/Madera.jpg');
+
+}
+
+#cuerpo {
+	position:relative;
+	width:800px;
+	margin: 0 auto;	
+}
+
+#entorno
+{
+	float: left;
+	height:700px;	
+	width:405px;	
+	overflow: scroll;	
+
+}
+
+#seleccion
+{
+
+	float: right;
+	width:300px;
+	height:300px;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-radius: 30px;
+	background-image: -o-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: -moz-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: -webkit-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: -ms-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	border: 1px solid #FFFFFF;
+	-moz-box-shadow:    2px 2px 4px 1px rgba(0,0,0,0.50);
+	-webkit-box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.50);
+	box-shadow:         2px 2px 4px 1px rgba(0,0,0,0.50);
+
+}
+
+.datos
+{
+	position:relative;
+	background-image:url('Images/Bordes.png');
+	height:30px;
+	width:486px;
+	margin: 0 auto;		
+}
+
+.transacciones
+{
+
+	position:relative;
+	width:400px;
+	height: 70px;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-radius: 30px;
+	background-image: -o-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: -moz-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: -webkit-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: -ms-radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	background-image: radial-gradient(-7% 73%, #C18545 8%, #AB7335 33%, #A86F32 36%, #A9723D 58%, #A97547 80%, #B48148 96%);
+	border: 1px solid #FFFFFF;
+	-moz-box-shadow:    2px 2px 4px 1px rgba(0,0,0,0.50);
+	-webkit-box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.50);
+	box-shadow:         2px 2px 4px 1px rgba(0,0,0,0.50);
+}
+
+.fecha
+{
+	position:absolute;
+	top: 5px;
+	left: 20px;
+}
+
+.descripcion
+{
+	position:absolute;
+	top: 30px;
+	left: 40px;	
+}
+
+.detalle
+{
+	position:absolute;
+	top: 30px;
+	left: 180px;	
+}
+
+.monto
+{
+	position:absolute;
+	top: 30px;
+	right: 40px;	
+}
+
+.parrafo
+
+{
+
+	margin-top: 0px;
+	margin-bottom: 0px;	
+	text-align: center;
+
+}
+
+#sinMargen1
+
+{
+
+	position:relative;
+	top: 40px;
+	left: 70px;
+
+}
+
+
+
+#sinMargen2
+
+{
+
+	position:relative;
+	top: 60px;
+	left: 70px;
+
+}
+
+#subir
+
+{
+
+	position:relative;
+	top: 90px;
+	left: 110px;
+
+}
+
+.conMargen1
+
+{
+
+	position:relative;
+	top: 50px;
+	left: 90px;
+
+}
+
+.conMargen2
+
+{
+
+	position:relative;
+	top: 70px;
+	left: 90px;
+
+}
+
+.clear {
+	clear:both;	
+}

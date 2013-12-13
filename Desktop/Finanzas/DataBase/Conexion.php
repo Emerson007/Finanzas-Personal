@@ -88,7 +88,7 @@ class Conexion
 		
 		{
 		
-			$querty = "SELECT T.idTransaccion, T.fecha, R.descripcion, R.libro, D.detalle, D.monto, T.Rubros_idRubros".
+			$querty = "SELECT T.fecha, R.descripcion, D.detalle, D.monto, R.libro, T.idTransaccion, T.Rubros_idRubros".
 						" FROM Transaccion T INNER JOIN Rubros R ON R.idRubros = T.Rubros_idRubros INNER JOIN".
 						" DetalleTransaccion D ON D.Transaccion_idTransaccion = T.idTransaccion WHERE T.Usuario_idUsuario".
 						" =".$id." AND R.Usuario_idUsuario =".$id." AND D.Usuario_idUsuario=".$id;
