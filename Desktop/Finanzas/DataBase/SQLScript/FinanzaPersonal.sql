@@ -67,18 +67,11 @@ CREATE  TABLE IF NOT EXISTS `FinanzaPersonal`.`DetalleTransaccion` (
   `detalle` VARCHAR(50) NOT NULL ,
   `monto` DOUBLE NOT NULL ,
   `Transaccion_idTransaccion` INT NOT NULL ,
-  `Usuario_idUsuario` INT NOT NULL ,
-  PRIMARY KEY (`idDetalleTransaccion`, `Transaccion_idTransaccion`, `Usuario_idUsuario`) ,
+  PRIMARY KEY (`idDetalleTransaccion`, `Transaccion_idTransaccion`) ,
   INDEX `fk_DetalleTransaccion_Transaccion_idx` (`Transaccion_idTransaccion` ASC) ,
-  INDEX `fk_DetalleTransaccion_Usuario1_idx` (`Usuario_idUsuario` ASC) ,
   CONSTRAINT `fk_DetalleTransaccion_Transaccion`
     FOREIGN KEY (`Transaccion_idTransaccion` )
     REFERENCES `FinanzaPersonal`.`Transaccion` (`idTransaccion` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_DetalleTransaccion_Usuario1`
-    FOREIGN KEY (`Usuario_idUsuario` )
-    REFERENCES `FinanzaPersonal`.`Usuario` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

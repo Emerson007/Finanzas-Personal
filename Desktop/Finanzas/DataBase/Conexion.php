@@ -79,7 +79,6 @@ class Conexion
 	
 	}
 	
-	
 	public function ConsultarTodo($id)
 	
 	{
@@ -91,7 +90,7 @@ class Conexion
 			$querty = "SELECT T.fecha, R.descripcion, D.detalle, D.monto, R.libro, T.idTransaccion, T.Rubros_idRubros".
 						" FROM Transaccion T INNER JOIN Rubros R ON R.idRubros = T.Rubros_idRubros INNER JOIN".
 						" DetalleTransaccion D ON D.Transaccion_idTransaccion = T.idTransaccion WHERE T.Usuario_idUsuario".
-						" =".$id." AND R.Usuario_idUsuario =".$id." AND D.Usuario_idUsuario=".$id;
+						" =".$id." AND R.Usuario_idUsuario =".$id
 			
 			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
 			

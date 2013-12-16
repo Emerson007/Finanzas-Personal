@@ -14,7 +14,7 @@ class DetalleTransaccion extends Conexion
 		
 		{
 		
-			$querty = "SELECT * FROM ".$this->tabla." WHERE Usuario_idUsuario =".$id." AND Transaccion_idTransaccion =".$transId;
+			$querty = "SELECT * FROM ".$this->tabla." WHERE Transaccion_idTransaccion =".$transId;
 			
 			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
 			
@@ -32,7 +32,7 @@ class DetalleTransaccion extends Conexion
 	
 	}
 	
-	public function ConsultarMontos($id, $rango)
+	public function Consultar($id)
 	
 	{
 	
@@ -40,7 +40,7 @@ class DetalleTransaccion extends Conexion
 		
 		{
 		
-			$querty = "SELECT * FROM ".$this->tabla." WHERE Usuario_idUsuario =".$id." AND monto ".$rango;
+			$querty = "SELECT * FROM ".$this->tabla;
 			
 			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
 			
@@ -54,17 +54,17 @@ class DetalleTransaccion extends Conexion
 		
 			echo "fallido";
 		
-		}	
+		}
 	
-	}		
+	}	
 	
 	public function InsertarDetalles($detalle, $monto, $idTrans, $idUsuario)
 	
 	{
 		
-		$querty = "INSERT INTO DetalleTransaccion (detalle, monto, Transaccion_idTransaccion, Usuario_idUsuario) VALUES ('".$detalle."','".$monto."','".$idTrans."','".$idUsuario."')";
+		$querty = "INSERT INTO DetalleTransaccion (detalle, monto, Transaccion_idTransaccion) VALUES ('".$detalle."','".$monto."','".$idTrans."')";
 
-		mysqli_query($querty, $this->descriptor) or die (mysql_error());//?
+		mysqli_query($querty, $this->descriptor) or die (mysql_error());
 	
 	}
 
