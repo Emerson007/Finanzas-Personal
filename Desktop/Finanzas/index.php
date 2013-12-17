@@ -1,14 +1,17 @@
 <?php
 
 	require_once("DataBase/Conexion.php");
+	require_once("DataBase/Direccion.php");	
 	require_once("Components/Ordenar.php");
 
 	$id = 1;
 	$tipo = -1;
 	$elemento = false;
 
+	$dir = new Direccion();
+
 	$orden = new Ordenar();
-	$conexion = new Conexion("localhost","FinanzaPersonal","root","root");
+	$conexion = new Conexion($dir->getServidor(),$dir->getBaseDatos(),$dir->getUsuario(),$dir->getContrasenia());
 	
 	$conexion->BaseDatos();
 	
@@ -160,6 +163,10 @@
     <link href="Style/estilos.css" rel="stylesheet" type="text/css"/>
 </head>
 <body id="todo">
+	<div id="cabeza">
+		<div id="tag1"><a href="index.php" class="disenio">Principal</a></div>	
+		<div id="tag2"><a href="Nuevos.php" class="disenio">Insertar Transacción</a></div>
+	</div>
 	<div id="cuerpo">
 		<div id="entorno">
 		<?php

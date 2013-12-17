@@ -129,6 +129,55 @@
 	margin-top: 20px;	
 }
 
+#cabeza
+{
+
+	position:relative;
+	width:750px;
+	height:100px;
+	margin: 0 auto;
+	background-image:url('Images/Marco.png');	
+
+}
+
+#tag1
+
+{
+
+	position:absolute;
+	width:110px;
+	top:30px;
+	left:100px;
+
+}
+
+#tag2
+
+{
+
+	position:absolute;
+	width:110px;	
+	top:20px;
+	right:100px;
+	text-align:center;
+
+}
+
+.disenio
+
+{
+
+	margin-top: 0px;
+	margin-bottom: 0px;	
+	padding-top: 7px;
+	text-align: center;
+	color: white;
+	font-weight:bold;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 20px;
+
+}
+
 .transacciones
 {
 

@@ -134,24 +134,43 @@ class Conexion
 	
 	}
 	
+	public function ConsultarSoloTransaccion($id)
+	
+	{
+	
+		if($this->exitoso === true)
+		
+		{
+		
+			$querty = "SELECT idTransaccion FROM Transaccion WHERE Usuario_idUsuario =".$id;		
+			
+			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
+			
+			$this->Distribucion();						
+		
+		}	
+	
+	}
+		
+	
 	public function InsertarDetalles($detalle, $monto, $idTrans)
 	
 	{
 		
-		$querty = "INSERT INTO DetalleTransaccion (detalle, monto, Transaccion_idTransaccion) VALUES ('".$detalle."','".$monto."','".$idTrans."')";
+		$querty = "INSERT INTO DetalleTransaccion (detalle, monto, Transaccion_idTransaccion) VALUES (".$detalle.",'".$monto."','".$idTrans."')";
 
-		mysqli_query($querty, $this->descriptor) or die (mysql_error());
+		mysql_query($querty, $this->descriptor) or die (mysql_error());
 	
 	}
 	
-	public function InsertarRubro($descriptor, $libro, $idUsuario)
+	public function InsertarRubro($descrip, $libro, $idUsuario)
 	
 	{
 		
-		$querty = "INSERT INTO Rubros (descripcion, libro, Usuario_idUsuario) VALUES ('".$descriptor."','".$libro."','".$idUsuario."')";
+		$querty = "INSERT INTO Rubros (descripcion, libro, Usuario_idUsuario) VALUES (".$descrip.",'".$libro."','".$idUsuario."')";
 
-		mysqli_query($querty, $this->descriptor) or die (mysql_error());
-			
+		mysql_query($querty, $this->descriptor) or die (mysql_error());
+		
 	}
 	
 	public function InsertarTransaccion($fecha, $idRubros, $idUsuario)
@@ -160,7 +179,7 @@ class Conexion
 		
 		$querty = "INSERT INTO Transaccion (fecha, Rubros_idRubros, Usuario_idUsuario) VALUES ('".$fecha."','".$idRubros."','".$idUsuario."')";
 
-		mysqli_query($querty, $this->descriptor) or die (mysql_error());
+		mysql_query($querty, $this->descriptor) or die (mysql_error());
 	
 	}		
 	
