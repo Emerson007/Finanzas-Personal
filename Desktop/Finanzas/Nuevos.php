@@ -26,16 +26,16 @@
 <body id="todo">
 	<div id="cuerpo">
 		<div id="registros">
-		<div id="caja0"><p class="parrafoDiv">Registrar Transacción</p></div>
-		<div id="caja1"><p class="parrafoDiv"><?php echo $hoy?></p></div>		
+		<div class="caja0"><p class="parrafoDiv">Registrar Transacción</p></div>
+		<div class="caja1"><p class="parrafoDiv"><?php echo $hoy?></p></div>		
             <form method="POST" name="forma" action="Nuevos.php">
-            	<div id="caja2">
+            	<div class="caja2">
             		<p class="parrafoDiv">Ingresar Monto: <input type="text" name="montar" maxlength="10" id="montos"></p>
             	</div>
-            	<div id="caja3">
+            	<div class="caja3">
             		<p class="parrafoDiv">Agregar Descripción: <input type="text" name="describir" maxlength="19" id="ingreso"></p>
             	</div>
-            	<div id="caja4">
+            	<div class="caja4">
             		<div class="flotadorI"><p class="parrafoDiv">Seleccionar Rubro: </p></div>         	
                     <div class="flotadorD">
                     	<select name="losRubros" class="formas">
@@ -56,6 +56,22 @@
             </form>
 		</div>
 		<div id="rubros">
+			<div class="caja0"><p class="parrafoDiv">Ingreso de Rubros:</p></div>
+			<form method="POST" name="forma2" action="Nuevos.php">
+            	<div class="caja2">
+            		<p class="parrafoDiv">Agregar Rubro: <input type="text" name="describir" maxlength="19" id="ingreso"></p>
+            	</div>
+            	<div id="elMismo">
+            	<div id="debeDiv">
+            	    <p class="parrafoDiv"><input type="radio" name="rub" value="0" id="debe"/>Deudor</p>
+            	</div>
+            	<div id="haberDiv">            	
+            	    <p class="parrafoDiv"><input type="radio" name="rub" value="1" id="haber"/>Acreedor</p>
+				</div>            	    
+					<div class="clear"></div>            	    
+            	</div>
+				<button type="submit" class="subir3" name="masRubros">Ingresar</button>            	
+			</form>
 		</div>		
 		<div class="clear"></div>
 	</div>
