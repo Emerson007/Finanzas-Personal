@@ -15,7 +15,7 @@ class Conexion
 	
 	protected $tabla = ".";
 	protected $losDatos;
-
+	
     function __construct($inServidor, $inBaseDatos, $inUsuario, $inContrasenia) 
    
     {
@@ -25,7 +25,7 @@ class Conexion
 		$this->usuario = $inUsuario;
 		$this->contrasenia = $inContrasenia;
        
-    }
+    }	
 
 	public function BaseDatos()
 	
@@ -53,32 +53,6 @@ class Conexion
 	
 	}
 	
-	public function Consultar($id)
-	
-	{
-	
-		if($this->exitoso === true)
-		
-		{
-		
-			$querty = "SELECT * FROM ".$this->tabla." WHERE Usuario_idUsuario =".$id;
-			
-			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
-			
-			$this->Distribucion();			
-		
-		}
-		
-		else
-		
-		{
-		
-			echo "fallido";
-		
-		}
-	
-	}
-	
 	public function ConsultarTodo($id)
 	
 	{
@@ -90,23 +64,105 @@ class Conexion
 			$querty = "SELECT T.fecha, R.descripcion, D.detalle, D.monto, R.libro, T.idTransaccion, T.Rubros_idRubros".
 						" FROM Transaccion T INNER JOIN Rubros R ON R.idRubros = T.Rubros_idRubros INNER JOIN".
 						" DetalleTransaccion D ON D.Transaccion_idTransaccion = T.idTransaccion WHERE T.Usuario_idUsuario".
-						" =".$id." AND R.Usuario_idUsuario =".$id
+						" =".$id." AND R.Usuario_idUsuario =".$id;
 			
 			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
 			
-			$this->Distribucion();			
-		
-		}
-		
-		else
-		
-		{
-		
-			echo "fallido";
+			$this->Distribucion();	
 		
 		}
 	
-	}	
+	}
+	
+	public function ConsultarFecha($id, $rubId, $laFecha)
+	
+	{
+
+		if($this->exitoso === true)
+		
+		{
+		
+			$querty = "SELECT T.fecha, R.descripcion, D.detalle, D.monto, R.libro, T.idTransaccion, T.Rubros_idRubros".
+						" FROM Transaccion T INNER JOIN Rubros R ON R.idRubros = T.Rubros_idRubros INNER JOIN".
+						" DetalleTransaccion D ON D.Transaccion_idTransaccion = T.idTransaccion WHERE T.Usuario_idUsuario".
+						" =".$id." AND R.Usuario_idUsuario =".$id." AND T.fecha =".$laFecha;
+						
+			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
+			
+			$this->Distribucion();						
+		
+		}
+	
+	}
+	
+	public function ConsultarRubro($id, $rubId)
+	
+	{
+	
+		if($this->exitoso === true)
+		
+		{
+		
+			$querty = "SELECT T.fecha, R.descripcion, D.detalle, D.monto, R.libro, T.idTransaccion, T.Rubros_idRubros".
+						" FROM Transaccion T INNER JOIN Rubros R ON R.idRubros = T.Rubros_idRubros INNER JOIN".
+						" DetalleTransaccion D ON D.Transaccion_idTransaccion = T.idTransaccion WHERE T.Usuario_idUsuario".
+						" =".$id." AND R.Usuario_idUsuario =".$id." AND T.Rubros_idRubros =".$rubId;			
+			
+			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
+			
+			$this->Distribucion();						
+		
+		}
+	
+	}
+	
+	public function ConsultarSoloRubro($id)
+	
+	{
+	
+		if($this->exitoso === true)
+		
+		{
+		
+			$querty = "SELECT descripcion, idRubros FROM Rubros WHERE Usuario_idUsuario =".$id;		
+			
+			$this->resultado = mysql_query($querty, $this->descriptor) or die(mysql_error());
+			
+			$this->Distribucion();						
+		
+		}	
+	
+	}
+	
+	public function InsertarDetalles($detalle, $monto, $idTrans)
+	
+	{
+		
+		$querty = "INSERT INTO DetalleTransaccion (detalle, monto, Transaccion_idTransaccion) VALUES ('".$detalle."','".$monto."','".$idTrans."')";
+
+		mysqli_query($querty, $this->descriptor) or die (mysql_error());
+	
+	}
+	
+	public function InsertarRubro($descriptor, $libro, $idUsuario)
+	
+	{
+		
+		$querty = "INSERT INTO Rubros (descripcion, libro, Usuario_idUsuario) VALUES ('".$descriptor."','".$libro."','".$idUsuario."')";
+
+		mysqli_query($querty, $this->descriptor) or die (mysql_error());
+			
+	}
+	
+	public function InsertarTransaccion($fecha, $idRubros, $idUsuario)
+	
+	{
+		
+		$querty = "INSERT INTO Transaccion (fecha, Rubros_idRubros, Usuario_idUsuario) VALUES ('".$fecha."','".$idRubros."','".$idUsuario."')";
+
+		mysqli_query($querty, $this->descriptor) or die (mysql_error());
+	
+	}		
 	
 	protected function Distribucion()
 	
@@ -116,7 +172,7 @@ class Conexion
    	
 	   	for($a = 0; $a < $length; $a++)
    	
-	   	{   	
+	   	{
    	
    			$row = mysql_fetch_assoc($this->resultado);
    	
@@ -134,7 +190,7 @@ class Conexion
 	
 		}			
 	
-	}
+	}	
 	
 	public function TodosDatos()
 	
@@ -142,7 +198,7 @@ class Conexion
 	
 		return $this->losDatos;
 	
-	}		
+	}			
 
 }
 

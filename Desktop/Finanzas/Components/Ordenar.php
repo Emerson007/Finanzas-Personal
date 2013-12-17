@@ -50,6 +50,16 @@ class Ordenar
 	
 	}
 	
+	public function Hoy($hoy)
+	
+	{
+	
+		$hoy = date_parse_from_format("Y-m-d", $hoy);
+		
+		return $hoy["month"].' de '.$this->meses[$hoy["month"]].' de '.$hoy["year"];		
+	
+	}
+	
 	private function Mes($terminal)
 	
 	{

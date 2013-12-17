@@ -1,40 +1,20 @@
 <?php
 
+	require_once("DataBase/Conexion.php");
+	require_once("Components/Ordenar.php");
+
 	$id = 1;
 	$tipo = -1;
 	$elemento = false;
 
-	require_once("DataBase/Conexion.php");
-	require_once("DataBase/Rubro.php");	
-	require_once("DataBase/Transacciones.php");
-	require_once("DataBase/DetalleTransaccion.php");
-	require_once("Components/Ordenar.php");
-
-	//echo "A";
-
 	$orden = new Ordenar();
-	
-	//echo "B";	
-
-	$rubro = new Rubro("localhost","FinanzaPersonal","root","root");
-	$transacciones = new Transacciones("localhost","FinanzaPersonal","root","root");
-	$detalle = new DetalleTransaccion("localhost","FinanzaPersonal","root","root");
 	$conexion = new Conexion("localhost","FinanzaPersonal","root","root");
 	
-	$rubro->BaseDatos();
-	$transacciones->BaseDatos();
-	$detalle->BaseDatos();
 	$conexion->BaseDatos();
 	
 	$conexion->ConsultarTodo($id);
-	$rubro->Consultar($id);
-	//$transacciones->ConsultarFecha($id);
-	$detalle->ConsultarMontos($id);
 	
 	$tConexion = $conexion->TodosDatos();
-	$tRubro = $rubro->TodosDatos();
-	//$tTrans = $transacciones->TodosDatos();
-	$tDetalle = $detalle->TodosDatos();
 	
 	$filasC = count($tConexion);
 	$columnasC = count($tConexion[0]);
@@ -176,7 +156,7 @@
 ?>
 <html>
 <head xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
-	<meta charset="UTF-8">
+	<meta charset="UTF-8"/>
     <link href="Style/estilos.css" rel="stylesheet" type="text/css"/>
 </head>
 <body id="todo">
@@ -294,14 +274,13 @@
 					
 				}
 					
-				echo "</div>";					
+				echo "</div>";
 				
-			}
-				
+			}	
 		?>
 		</div>
 		<div id="seleccion">
-            <form method="POST" name="forma" action="Estados.php">
+            <form method="POST" name="forma" action="index.php">
             	<div id="sinMargen1">
             	    <input type="radio" onclick="disableFecha()" name="orden" value="fecha"/> Ordenar por Fecha
             	</div>
